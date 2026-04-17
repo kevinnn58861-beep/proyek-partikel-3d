@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Gesture Particle System</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #050505; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        canvas { display: block; }
+        
+        /* UI Minimalis */
+        #gui-container {
+            position: absolute; top: 20px; left: 20px;
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px; border-radius: 16px; color: #eee;
+            width: 220px; z-index: 10;
+        }
+
+        h2 { margin: 0 0 15px 0; font-size: 16px; font-weight: 400; letter-spacing: 1px; color: #00ffcc; }
+        .control-group { margin-bottom: 15px; }
+        label { display: block; font-size: 11px; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
+        
+        select, input[type="color"] {
+            width: 100%; background: #222; border: 1px solid #444;
+            color: white; padding: 8px; border-radius: 6px; outline: none;
+        }
+
+        .btn-full {
+            width: 100%; background: #00ffcc; color: #000; border: none;
+            padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; margin-top: 10px;
+        }
+        .btn-full:hover { background: #00cca3; }
+
+        #video-preview {
+            position: absolute; bottom: 20px; right: 20px;
+            width: 160px; height: 120px; border-radius: 12px;
+            border: 2px solid rgba(0, 255, 204, 0.3); transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="gui-container">
+        <h2>PARTICLE CONTROL</h2>
+        <div class="control-group">
+            <label>Pilih Pola</label>
+            <select id="patternSelect">
+                <option value="sphere">Sphere Nebula</option>
+                <option value="box">Digital Cube</option>
+                <option value="random">Chaos Theory</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Warna Partikel</label>
+            <input type="color" id="colorPicker" value="#00ffcc">
+        </div>
+        <button class="btn-full" onclick="toggleFullscreen()">FULLSCREEN</button>
+    </div>
+
+    <video id="video-preview" autoplay playsinline></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
